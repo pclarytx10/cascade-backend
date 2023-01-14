@@ -15,8 +15,24 @@ postRouter.get("/", async (req, res) => {
 });
 
 // Delete
+postRouter.delete("/:id", async (req, res) => {
+    try {
+        const deletedPost = await Posts.findByIdAndRemove(req.params.id);
+        res.json(deletedPost);
+    } catch (error) {
+        res.status(400).json(error);
+    }
+});
 
 // Update
+postRouter.put("/:id", async (req, res) => {
+    try {
+        const updatedPost = await Posts.findByIdAndUpdate(req.params.id, req.body, {new: true});
+        res.json(updatedPost);
+    } catch (error) {
+        res.status(400).json(error);
+    }
+});
 
 // Create
 postRouter.post("/", async (req, res) => {

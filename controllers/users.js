@@ -16,8 +16,24 @@ userRouter.get("/", async (req, res) => {
 });
 
 // Delete
+userRouter.delete("/:id", async (req, res) => {
+    try {
+        const deletedUser = await Users.findByIdAndRemove(req.params.id);
+        res.json(deletedUser);
+    } catch (error) {
+        res.status(400).json(error);
+    }
+});
 
 // Update
+userRouter.put("/:id", async (req, res) => {
+    try {
+        const updatedUser = await Users.findByIdAndUpdate(req.params.id, req.body, {new: true});
+        res.json(updatedUser);
+    } catch (error) {
+        res.status(400).json(error);
+    }
+});
 
 // Create
 userRouter.post("/", async (req, res) => {
