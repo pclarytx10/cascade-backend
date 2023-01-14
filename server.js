@@ -32,6 +32,12 @@ mongoose.connection
     .on("close", () => console.log("You are disconnected from mongoose"))
     .on("error", (error) => console.log(error));
 
+// import controllers
+const postsController = require('./controllers/posts.js');
+app.use('/posts', postsController);
+const usersController = require("./controllers/users.js");
+app.use("/users", usersController);
+
 // create a test route
 app.get("/", (req, res) => {
     res.send("Cascade API");

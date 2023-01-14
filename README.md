@@ -56,6 +56,7 @@ Stretch Goals:
   - [ ] Express
   - [ ] React
   - [ ] Node
+  - [ ] Bcrypt
 - [ ] **Have a well-styled interactive front-end** that communicates with the **Express ** backend via AJAX.
 
 - [ ] **Must follow MVC architecture**
