@@ -9,7 +9,7 @@ const seedData = require('../seedData.js')
 postRouter.get('/seed', (req, res) => {
     Posts.deleteMany({}, (err, allPosts) => {})
     Posts.create(seedData, (err, data) => {
-        res.redirect('/')
+        res.redirect('/newsfeed')
     })
 })
 
