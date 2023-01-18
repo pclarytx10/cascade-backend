@@ -4,6 +4,15 @@ const postRouter = express.Router();
 const Posts = require('../models/posts.js');
 
 // Routes
+// Seed
+const seedData = require('../seedData.js')
+postRouter.get('/seed', (req, res) => {
+    Posts.deleteMany({}, (err, allPosts) => {})
+    Posts.create(seedData, (err, data) => {
+        res.redirect('/newsfeed')
+    })
+})
+
 // Index
 postRouter.get("/", async (req, res) => {
     try {
