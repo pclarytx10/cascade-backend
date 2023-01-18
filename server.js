@@ -16,8 +16,8 @@ const app = express();
 const mongoose = require("mongoose");
 
 // import middlware
-app.use(express.json()); // parse json bodies, create req.body
 app.use(cors()); // to prevent cors errors, open access to all origins
+app.use(express.json()); // parse json bodies, create req.body
 // Mogan middleware for logging HTTP requests
 if (process.env.NODE_ENV !== 'production') {
     app.use(morgan('dev'))
