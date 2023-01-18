@@ -7,7 +7,7 @@ const { PORT = 4000, MONGODB_URL } = process.env;
 // import dependencies
 const express = require("express");
 const morgan = require("morgan");
-// const cors = require("cors"); 
+const cors = require("cors"); 
 
 // create application object
 const app = express();
@@ -17,24 +17,7 @@ const mongoose = require("mongoose");
 
 // import middlware
 app.use(express.json()); // parse json bodies, create req.body
-// app.use(cors()); // to prevent cors errors, open access to all origins
-//Cors Configuration - Start
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*")
-    res.header(
-      "Access-Control-Allow-Headers",
-      "Origin, X-Requested, Content-Type"
-    )
-    if (req.method === "OPTIONS") {
-      res.header(
-        "Access-Control-Allow-Methods",
-        "POST, PUT, PATCH, GET, DELETE"
-      )
-      return res.status(200).json({})
-    }
-    next()
-  })
-  //Cors Configuration - End
+app.use(cors()); // to prevent cors errors, open access to all origins
 // Mogan middleware for logging HTTP requests
 if (process.env.NODE_ENV !== 'production') {
     app.use(morgan('dev'))
